@@ -52,17 +52,19 @@ export function Hero() {
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
               className="flex flex-col gap-4 sm:flex-row"
             >
-              <Button size="lg" className="rounded-full px-8 text-base h-14 group transition-all hover:scale-105 active:scale-95" asChild>
-                <Link href="/register">
-                  Get Started
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" className="rounded-full px-8 text-base h-14 transition-all hover:bg-secondary/5 hover:text-secondary hover:border-secondary/20" asChild>
-                <Link href="/professionals">
-                  Find Professionals
-                </Link>
-              </Button>
+              <Link 
+                href="/register"
+                className="group inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground px-8 text-base h-14 font-medium transition-all hover:bg-primary/80 hover:scale-105 active:scale-95"
+              >
+                Get Started
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+              <Link 
+                href="/professionals"
+                className="inline-flex items-center justify-center rounded-full border border-border bg-background px-8 text-base h-14 font-medium transition-all hover:bg-secondary/5 hover:text-secondary hover:border-secondary/20"
+              >
+                Find Professionals
+              </Link>
             </motion.div>
           </div>
 

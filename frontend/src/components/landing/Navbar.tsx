@@ -34,12 +34,18 @@ export function Navbar() {
         </div>
       </div>
       <div className="flex items-center gap-4">
-        <Button variant="ghost" className="hidden sm:inline-flex text-sm font-medium" asChild>
-          <Link href="/login">Login</Link>
-        </Button>
-        <Button className="rounded-full px-6 text-sm font-medium transition-all hover:scale-105 active:scale-95" asChild>
-          <Link href="/register">Get Started</Link>
-        </Button>
+        <Link 
+          href="/login" 
+          className="hidden sm:inline-flex text-sm font-medium h-8 items-center justify-center px-2.5 rounded-lg hover:bg-muted hover:text-foreground transition-all"
+        >
+          Login
+        </Link>
+        <Link 
+          href="/register" 
+          className="inline-flex h-8 items-center justify-center rounded-full bg-primary text-primary-foreground px-6 text-sm font-medium transition-all hover:bg-primary/80 hover:scale-105 active:scale-95"
+        >
+          Get Started
+        </Link>
       </div>
     </motion.nav>
   );
