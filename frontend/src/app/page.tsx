@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
-import { TrustSection } from "@/components/landing/TrustSection";
+import { LiveMarketSection } from "@/components/landing/LiveMarketSection";
 import { TrustedBySection } from "@/components/landing/TrustedBySection";
 import { PricingSection } from "@/components/landing/PricingSection";
 import { MarketplaceSection } from "@/components/landing/MarketplaceSection";
@@ -17,7 +17,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <TrustSection />
+        <LiveMarketSection />
         <TrustedBySection />
         <PricingSection />
         <MarketplaceSection />

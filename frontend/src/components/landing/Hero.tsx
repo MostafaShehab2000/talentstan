@@ -2,247 +2,179 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { CheckCircle, ArrowRight, TrendingUp, TrendingDown } from "lucide-react";
-
-const dashboardStats = [
-  { label: "Active Shifts", value: "248", change: "+12%", trend: "up" },
-  { label: "Professionals Online", value: "1,429", change: "+8%", trend: "up" },
-  { label: "Successful Matches", value: "3,892", change: "+15%", trend: "up" },
-  { label: "Total Revenue", value: "$2.4M", change: "+22%", trend: "up" },
-];
-
-const liveShifts = [
-  { role: "ICU Nurse – Night Shift", hospital: "King Fahad Medical City", urgent: true, time: "2 min ago" },
-  { role: "General Practitioner", hospital: "Aster Hospital, Dubai", urgent: false, time: "5 min ago" },
-  { role: "Pharmacist", hospital: "MediCity City Hospital", urgent: false, time: "8 min ago" },
-  { role: "Laboratory Technician", hospital: "Saudi German Hospital", urgent: false, time: "11 min ago" },
-];
-
-const trustBadges = [
-  { label: "AI-Powered Matching" },
-  { label: "Real-time Availability" },
-  { label: "Secure & Compliant" },
-];
+import { ArrowRight, PlayCircle, TrendingUp, Activity, CheckCircle2 } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="bg-white overflow-hidden">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-14 pb-0">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-8 items-start">
+    <section className="relative overflow-hidden bg-[#F8FAFC] pt-24 pb-32">
+      {/* Background Cinematic Glows */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full overflow-hidden -z-10 pointer-events-none">
+        <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-[#14B8A6]/10 blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[60%] rounded-full bg-[#2563EB]/5 blur-[120px]" />
+      </div>
+
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
+          
           {/* Left Content */}
-          <div className="flex flex-col justify-center pt-4 pb-16">
+          <div className="flex flex-col justify-center max-w-2xl">
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="mb-5 inline-flex items-center gap-2"
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="mb-8"
             >
-              <span className="flex h-2 w-2 rounded-full bg-[#14B8A6]" />
-              <span className="text-sm font-medium text-[#0F766E]">The #1 Healthcare Workforce Marketplace in MENA</span>
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#0F766E]/20 bg-[#0F766E]/5 px-4 py-1.5 backdrop-blur-md">
+                <span className="flex h-2 w-2 rounded-full bg-[#0F766E]" />
+                <span className="text-sm font-semibold text-[#0F766E] tracking-wide">ENTERPRISE OS FOR HEALTHCARE</span>
+              </div>
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.08 }}
-              className="text-5xl font-bold tracking-tight text-[#0A2218] leading-[1.1] mb-6"
+              transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="text-6xl sm:text-7xl lg:text-[5.5rem] font-bold tracking-tighter text-[#021A18] leading-[0.95] mb-8"
             >
-              The Enterprise <br />
-              Healthcare <br />
-              <span className="text-[#0F766E]">Workforce Platform</span>
+              The Digital <br />
+              Nation of <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0F766E] to-[#14B8A6]">Healthcare</span> <br />
+              Talent.
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.14 }}
-              className="text-lg text-[#4B5563] leading-relaxed mb-8 max-w-lg"
+              transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="text-xl text-[#4B5563] leading-relaxed mb-10 max-w-lg font-medium"
             >
-              Connecting healthcare facilities with verified medical professionals. Manage shifts, optimize operations, and access the best talent with AI-powered matching.
+              TalentStan is the intelligent marketplace connecting healthcare facilities with verified medical professionals through AI-powered workforce orchestration.
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex flex-col gap-4 sm:flex-row mb-8"
+              transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col sm:flex-row gap-4"
             >
               <Link
                 href="/register"
-                className="flex items-center justify-center gap-2 rounded-lg bg-[#0F766E] px-6 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-[#0d6860] transition-all hover:shadow-md active:scale-95"
+                className="group flex h-14 items-center justify-center gap-2 rounded-full bg-[#021A18] px-8 text-base font-semibold text-white transition-all hover:bg-[#0F766E] hover:shadow-xl hover:shadow-[#0F766E]/20 hover:-translate-y-1 active:translate-y-0"
               >
-                Join the Network <ArrowRight className="h-4 w-4" />
+                Get Started <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
-                href="/professionals"
-                className="flex items-center justify-center gap-2 rounded-lg border border-[#D1D5DB] bg-white px-6 py-3.5 text-sm font-semibold text-[#374151] hover:bg-[#F9FAFB] hover:border-[#0F766E]/30 transition-all"
+                href="/demo"
+                className="group flex h-14 items-center justify-center gap-2 rounded-full border-2 border-[#E5E7EB] bg-white px-8 text-base font-semibold text-[#021A18] transition-all hover:border-[#021A18] hover:bg-[#F8FAFC]"
               >
-                I&apos;m a Healthcare Professional
+                <PlayCircle className="h-5 w-5 text-[#0F766E] transition-transform group-hover:scale-110" /> Book Enterprise Demo
               </Link>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex flex-wrap items-center gap-6"
-            >
-              {trustBadges.map((badge) => (
-                <div key={badge.label} className="flex items-center gap-1.5">
-                  <CheckCircle className="h-4 w-4 text-[#0F766E]" />
-                  <span className="text-sm text-[#6B7280] font-medium">{badge.label}</span>
-                </div>
-              ))}
             </motion.div>
           </div>
 
-          {/* Right — Dashboard Mockup */}
+          {/* Right — Cinematic Floating Dashboard */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-            className="relative lg:mt-0 mt-0"
+            initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
+            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="relative lg:h-[600px] w-full mt-10 lg:mt-0 flex items-center justify-center perspective-[2000px]"
           >
-            {/* Floating Doctor Card - Top Right */}
-            <div className="absolute -top-4 -right-4 z-10 hidden lg:block">
-              <div className="flex items-center gap-3 rounded-xl border border-[#E5E7EB] bg-white px-4 py-3 shadow-lg">
-                <div className="h-10 w-10 rounded-full bg-[#F3F4F6] overflow-hidden flex items-center justify-center">
-                  <span className="text-xl">👨‍⚕️</span>
+            {/* Main Glass Dashboard */}
+            <motion.div 
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              className="relative w-full max-w-[500px] rounded-3xl border border-white/50 bg-white/80 p-6 shadow-2xl backdrop-blur-2xl"
+              style={{ transformStyle: 'preserve-3d', transform: 'rotateY(-5deg) rotateX(5deg)' }}
+            >
+              <div className="flex items-center justify-between mb-8 border-b border-[#E5E7EB]/50 pb-4">
+                <div className="flex items-center gap-2">
+                  <div className="h-8 w-8 rounded-lg bg-[#021A18] flex items-center justify-center">
+                    <Activity className="h-4 w-4 text-[#14B8A6]" />
+                  </div>
+                  <span className="font-bold text-[#021A18]">Workforce OS</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="flex h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+                  <span className="text-xs font-semibold text-[#6B7280]">SYSTEM LIVE</span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                {[
+                  { label: "Active Shifts", value: "1,246", change: "+14%" },
+                  { label: "Live Professionals", value: "26,842", change: "+8%" },
+                  { label: "Market Price", value: "$145/hr", change: "+2%" },
+                  { label: "Revenue", value: "$8.4M", change: "+24%" },
+                ].map((stat) => (
+                  <div key={stat.label} className="rounded-2xl border border-[#E5E7EB]/50 bg-[#F8FAFC]/50 p-4 transition-colors hover:bg-white">
+                    <div className="text-xs font-medium text-[#6B7280] mb-2">{stat.label}</div>
+                    <div className="flex items-end justify-between">
+                      <div className="text-2xl font-bold text-[#021A18]">{stat.value}</div>
+                      <div className="flex items-center text-xs font-bold text-[#0F766E] bg-[#0F766E]/10 px-1.5 py-0.5 rounded">
+                        <TrendingUp className="h-3 w-3 mr-0.5" /> {stat.change}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="rounded-2xl bg-[#021A18] p-5 text-white">
+                <div className="flex justify-between items-center mb-4">
+                  <div className="text-sm font-semibold text-white/80">AI Match Score Optimization</div>
+                  <div className="text-xs font-bold text-[#14B8A6] bg-[#14B8A6]/20 px-2 py-1 rounded-full">98.5% Accuracy</div>
+                </div>
+                <div className="h-16 w-full rounded-xl overflow-hidden relative">
+                  {/* Fake Bloomberg chart */}
+                  <svg viewBox="0 0 100 40" className="w-full h-full preserve-aspect-ratio-none stroke-[#14B8A6] fill-[#14B8A6]/20">
+                    <path d="M0 40 L0 30 C 20 30, 30 10, 50 20 C 70 30, 80 5, 100 10 L100 40 Z" />
+                  </svg>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Floating Profile 1 */}
+            <motion.div
+              animate={{ y: [0, -15, 0], x: [0, 5, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              className="absolute -right-8 top-12 z-20"
+              style={{ transform: 'translateZ(50px)' }}
+            >
+              <div className="flex items-center gap-4 rounded-2xl border border-white/60 bg-white/90 p-4 shadow-xl backdrop-blur-xl">
+                <div className="h-12 w-12 rounded-full bg-gradient-to-br from-[#0F766E] to-[#14B8A6] p-0.5">
+                  <div className="h-full w-full rounded-full border-2 border-white bg-[#021A18] flex items-center justify-center text-lg">👩‍⚕️</div>
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-[#111827]">Dr. Ahmed Hassan</div>
-                  <div className="text-xs text-[#6B7280]">Cardiologist</div>
+                  <div className="text-sm font-bold text-[#021A18]">Dr. Sarah Jenkins</div>
+                  <div className="text-xs font-medium text-[#6B7280]">Cardiothoracic Surgeon</div>
                   <div className="flex items-center gap-1.5 mt-1">
-                    <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
-                    <span className="text-xs text-green-600 font-medium">Available</span>
-                    <span className="text-xs text-[#9CA3AF] ml-1">★ 4.9 (108)</span>
+                    <CheckCircle2 className="h-3 w-3 text-[#14B8A6]" />
+                    <span className="text-[10px] font-bold text-[#14B8A6]">VERIFIED & AVAILABLE</span>
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            {/* Floating Nurse Card - Bottom Right */}
-            <div className="absolute -bottom-4 -right-4 z-10 hidden lg:block">
-              <div className="flex items-center gap-3 rounded-xl border border-[#E5E7EB] bg-white px-4 py-3 shadow-lg">
-                <div className="h-10 w-10 rounded-full bg-[#F3F4F6] overflow-hidden flex items-center justify-center">
-                  <span className="text-xl">👩‍⚕️</span>
+            {/* Floating Profile 2 */}
+            <motion.div
+              animate={{ y: [0, 15, 0], x: [0, -5, 0] }}
+              transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+              className="absolute -left-12 bottom-20 z-20"
+              style={{ transform: 'translateZ(80px)' }}
+            >
+              <div className="flex items-center gap-4 rounded-2xl border border-white/60 bg-white/90 p-4 shadow-xl backdrop-blur-xl">
+                <div className="h-12 w-12 rounded-full bg-gradient-to-br from-[#2563EB] to-blue-400 p-0.5">
+                  <div className="h-full w-full rounded-full border-2 border-white bg-[#021A18] flex items-center justify-center text-lg">👨‍⚕️</div>
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-[#111827]">Sarah Al-Mutairi</div>
-                  <div className="text-xs text-[#6B7280]">ICU Nurse</div>
+                  <div className="text-sm font-bold text-[#021A18]">James Chen, MD</div>
+                  <div className="text-xs font-medium text-[#6B7280]">Emergency Medicine</div>
                   <div className="flex items-center gap-1.5 mt-1">
-                    <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
-                    <span className="text-xs text-green-600 font-medium">Available</span>
-                    <span className="text-xs text-[#9CA3AF] ml-1">★ 4.8 (96)</span>
+                    <CheckCircle2 className="h-3 w-3 text-[#14B8A6]" />
+                    <span className="text-[10px] font-bold text-[#14B8A6]">VERIFIED & AVAILABLE</span>
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Main Dashboard Card */}
-            <div className="rounded-2xl border border-[#E5E7EB] bg-white shadow-2xl overflow-hidden">
-              {/* Dashboard Header */}
-              <div className="flex items-center gap-0 border-b border-[#F3F4F6]">
-                <div className="flex w-48 flex-col border-r border-[#F3F4F6] bg-[#FAFAFA] p-4 shrink-0">
-                  <div className="flex items-center gap-2 mb-6">
-                    <div className="h-6 w-6 rounded bg-[#0F766E] flex items-center justify-center">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
-                        <path d="M12 2L4 7v5c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V7L12 2z" fill="white" fillOpacity="0.5"/>
-                        <path d="M9 12l2 2 4-4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </div>
-                    <span className="text-xs font-bold text-[#0A2218]">TalentStan</span>
-                  </div>
-                  <nav className="flex flex-col gap-0.5 text-xs">
-                    {["Overview", "Shifts", "Professionals", "Facilities", "Messages", "Analytics", "Payments", "Reports", "Settings"].map((item, i) => (
-                      <div key={item} className={`flex items-center gap-2 rounded-md px-2 py-1.5 cursor-pointer ${i === 0 ? "bg-[#0F766E]/10 text-[#0F766E] font-semibold" : "text-[#6B7280] hover:bg-[#F3F4F6]"}`}>
-                        <div className="h-1.5 w-1.5 rounded-full bg-current opacity-60" />
-                        {item}
-                      </div>
-                    ))}
-                  </nav>
-                </div>
-
-                <div className="flex-1 p-5 overflow-hidden">
-                  <div className="flex items-center justify-between mb-5">
-                    <div className="text-sm font-semibold text-[#111827]">Overview</div>
-                  </div>
-
-                  {/* Stats Grid */}
-                  <div className="grid grid-cols-2 gap-3 mb-5">
-                    {dashboardStats.map((stat) => (
-                      <div key={stat.label} className="rounded-xl border border-[#F3F4F6] bg-[#FAFAFA] p-3">
-                        <div className="text-xs text-[#9CA3AF] mb-1">{stat.label}</div>
-                        <div className="flex items-end justify-between">
-                          <div className="text-base font-bold text-[#111827]">{stat.value}</div>
-                          <div className={`flex items-center gap-0.5 text-xs font-medium ${stat.trend === "up" ? "text-green-600" : "text-red-500"}`}>
-                            {stat.trend === "up" ? <TrendingUp className="h-3 w-3" /> : <TrendingDown className="h-3 w-3" />}
-                            {stat.change}
-                          </div>
-                        </div>
-                        <div className="mt-2 h-6 w-full opacity-50">
-                          <svg viewBox="0 0 60 20" className="w-full h-full">
-                            <polyline
-                              fill="none"
-                              stroke="#0F766E"
-                              strokeWidth="1.5"
-                              points={`0,15 10,12 20,14 30,8 40,10 50,6 60,4`}
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Live Shift Requests */}
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <div className="text-xs font-semibold text-[#111827] mb-2">Live Shift Requests</div>
-                      <div className="space-y-2">
-                        {liveShifts.map((shift) => (
-                          <div key={shift.role} className="flex items-start gap-2">
-                            <div className="h-5 w-5 rounded bg-[#F3F4F6] flex items-center justify-center shrink-0 mt-0.5 text-[10px]">
-                              🏥
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <div className="flex items-center gap-1">
-                                <span className="text-[11px] font-medium text-[#111827] truncate">{shift.role}</span>
-                                {shift.urgent && <span className="shrink-0 rounded px-1 py-0.5 bg-red-50 text-red-600 text-[9px] font-bold">Urgent</span>}
-                              </div>
-                              <div className="text-[10px] text-[#9CA3AF]">{shift.time}</div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                      <button className="mt-2 text-[11px] font-medium text-[#0F766E] flex items-center gap-1">
-                        View all shifts <ArrowRight className="h-2.5 w-2.5" />
-                      </button>
-                    </div>
-
-                    <div>
-                      <div className="text-xs font-semibold text-[#111827] mb-2">AI Match Score</div>
-                      <div className="rounded-xl border border-[#F3F4F6] bg-[#FAFAFA] p-3 text-center">
-                        <div className="text-3xl font-bold text-[#0F766E] mb-1">95%</div>
-                        <div className="text-xs font-semibold text-[#111827] mb-1">Excellent Match</div>
-                        <div className="text-[10px] text-[#9CA3AF]">Based on skills, experience and availability</div>
-                      </div>
-
-                      {/* Facility Tag */}
-                      <div className="mt-3 rounded-xl border border-[#F3F4F6] bg-[#F8FFFE] p-2.5 flex items-center gap-2">
-                        <div className="h-6 w-6 rounded bg-[#0F766E]/10 flex items-center justify-center text-xs">🏥</div>
-                        <div>
-                          <div className="text-[11px] font-semibold text-[#111827]">King Fahad Medical City</div>
-                          <div className="text-[10px] text-[#9CA3AF]">Riyadh, Saudi Arabia</div>
-                        </div>
-                        <div className="ml-auto">
-                          <span className="rounded-full bg-[#0F766E]/10 px-2 py-0.5 text-[10px] font-semibold text-[#0F766E]">24 Active Shifts</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

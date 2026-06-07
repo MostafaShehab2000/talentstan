@@ -1,113 +1,127 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { Check, Star } from "lucide-react";
 
 const plans = [
   {
-    name: "Starter",
-    subtitle: "Up to 200 staff",
-    price: "299",
-    period: "/month",
-    features: ["Basic Listing", "Access to Talent", "Standard Support"],
-    cta: "Choose Plan",
+    name: "Silver",
+    price: "499",
+    features: ["Basic Directory Listing", "Standard Support", "Basic Analytics"],
     highlighted: false,
+    color: "bg-white",
+    border: "border-[#E5E7EB]",
+    button: "bg-white text-[#374151] border border-[#D1D5DB] hover:bg-[#F9FAFB]",
   },
   {
-    name: "Professional",
-    subtitle: "201 – 1,000 staff",
-    price: "799",
-    period: "/month",
-    features: ["Featured Listing", "Priority Talent Access", "Analytics Dashboard", "Priority Support"],
-    cta: "Choose Plan",
+    name: "Gold",
+    price: "999",
+    features: ["Priority Placement", "Verified Badge", "Advanced Analytics", "Priority Support"],
     highlighted: false,
+    color: "bg-white",
+    border: "border-[#E5E7EB]",
+    button: "bg-white text-[#374151] border border-[#D1D5DB] hover:bg-[#F9FAFB]",
   },
   {
-    name: "Enterprise",
-    subtitle: "1,001 – 5,000 staff",
-    price: "1,999",
-    period: "/month",
-    features: ["Premium Visibility", "Dedicated Account Manager", "Advanced Analytics", "API Access", "Priority Support"],
-    cta: "Choose Plan",
-    highlighted: true,
+    name: "Platinum",
+    price: "2,499",
+    features: ["Homepage Visibility", "Dedicated Account Manager", "Premium Talent Access", "API Access"],
+    highlighted: false,
+    color: "bg-[#FAFAFA]",
+    border: "border-[#0F766E]/20",
+    button: "bg-[#0F766E]/10 text-[#0F766E] font-semibold hover:bg-[#0F766E]/20",
   },
   {
-    name: "Enterprise+",
-    subtitle: "5,000+ staff",
+    name: "National Partner",
+    price: "4,999",
+    features: ["National Directory Placement", "Custom Onboarding", "Full Integration Support", "24/7 SLA Support"],
+    highlighted: false,
+    color: "bg-[#FAFAFA]",
+    border: "border-[#0F766E]/40",
+    button: "bg-[#0F766E]/10 text-[#0F766E] font-semibold hover:bg-[#0F766E]/20",
+  },
+  {
+    name: "Strategic Partner",
     price: "Custom",
-    period: "",
-    features: ["Top Placement (Homepage)", "Custom Integrations", "Dedicated Success Team", "SLA & Onboarding", "24/7 Priority Support"],
-    cta: "Contact Sales",
-    highlighted: false,
+    features: [
+      "Homepage Hero Placement",
+      "AI Recommendation Priority",
+      "Enterprise HRMS Integration",
+      "Dedicated Success Team",
+      "Custom SLA Guarantee",
+    ],
+    highlighted: true,
+    color: "bg-[#021A18]",
+    border: "border-[#021A18]",
+    button: "bg-[#14B8A6] text-white font-bold hover:bg-[#0d9486]",
+    text: "text-white",
+    mutedText: "text-white/60",
   },
 ];
 
 export function PricingSection() {
   return (
-    <section id="pricing" className="bg-white border-b border-[#F3F4F6] py-20">
+    <section id="pricing" className="bg-[#F8FAFC] py-32 border-b border-[#F3F4F6]">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-3 lg:gap-8 items-start">
-          {/* Left Header */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+        <div className="mb-16 text-center max-w-3xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="lg:sticky lg:top-24"
+            className="text-3xl lg:text-5xl font-bold tracking-tight text-[#021A18]"
           >
-            <h2 className="text-2xl font-bold text-[#0A2218] mb-3">Hospital Partnership & Sponsorship Packages</h2>
-            <p className="text-[#6B7280] text-sm leading-relaxed mb-4">
-              Choose the right plan to boost your visibility and access the best talent. All plans include full platform access and priority support.
-            </p>
-            <p className="text-[11px] text-[#9CA3AF]">All prices are in USD. Annual billing available with up to 20% discount.</p>
-          </motion.div>
+            Hospital Partnership & Sponsorship Packages
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="mt-6 text-lg text-[#6B7280] leading-relaxed"
+          >
+            Secure top talent with priority marketplace placement. Our partnership tiers provide increasing levels of brand visibility and API integrations.
+          </motion.p>
+        </div>
 
-          {/* Plans Grid */}
-          <div className="lg:col-span-2 grid grid-cols-2 gap-4 md:grid-cols-2">
-            {plans.map((plan, i) => (
-              <motion.div
-                key={plan.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className={`flex flex-col rounded-2xl border p-6 ${
-                  plan.highlighted
-                    ? "border-[#0F766E] bg-[#F0FDF9] ring-1 ring-[#0F766E]/20"
-                    : "border-[#E5E7EB] bg-white"
-                }`}
-              >
-                {plan.highlighted && (
-                  <div className="mb-3 inline-flex">
-                    <span className="rounded-full bg-[#0F766E] px-2.5 py-0.5 text-[11px] font-bold text-white">Popular</span>
-                  </div>
-                )}
-                <div className="mb-1 text-base font-bold text-[#111827]">{plan.name}</div>
-                <div className="mb-3 text-xs text-[#9CA3AF]">{plan.subtitle}</div>
-                <div className="mb-5 flex items-baseline gap-1">
-                  {plan.price !== "Custom" && <span className="text-sm text-[#6B7280]">$</span>}
-                  <span className="text-3xl font-bold text-[#111827]">{plan.price}</span>
-                  {plan.period && <span className="text-sm text-[#9CA3AF]">{plan.period}</span>}
+        <div className="flex flex-wrap justify-center gap-6 lg:gap-8 items-stretch">
+          {plans.map((plan, i) => (
+            <motion.div
+              key={plan.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className={`flex w-full max-w-sm flex-col rounded-[2rem] border p-8 transition-all hover:-translate-y-2 hover:shadow-2xl ${plan.color} ${plan.border} ${plan.highlighted ? 'shadow-2xl shadow-[#021A18]/20 scale-105 z-10' : 'shadow-sm'}`}
+            >
+              {plan.highlighted && (
+                <div className="mb-6 flex items-center gap-2">
+                  <Star className="h-5 w-5 text-[#14B8A6] fill-[#14B8A6]" />
+                  <span className="text-xs font-bold uppercase tracking-widest text-[#14B8A6]">Enterprise Choice</span>
                 </div>
-                <ul className="mb-6 flex flex-col gap-2.5 flex-1">
-                  {plan.features.map((feat) => (
-                    <li key={feat} className="flex items-start gap-2">
-                      <Check className="h-4 w-4 shrink-0 text-[#0F766E] mt-0.5" />
-                      <span className="text-sm text-[#374151]">{feat}</span>
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  className={`w-full rounded-lg py-2.5 text-sm font-semibold transition-all hover:shadow-md active:scale-95 ${
-                    plan.highlighted
-                      ? "bg-[#0F766E] text-white hover:bg-[#0d6860]"
-                      : "border border-[#D1D5DB] bg-white text-[#374151] hover:bg-[#F9FAFB] hover:border-[#0F766E]/40"
-                  }`}
-                >
-                  {plan.cta}
-                </button>
-              </motion.div>
-            ))}
-          </div>
+              )}
+              
+              <div className={`mb-2 text-xl font-bold ${plan.text || 'text-[#111827]'}`}>{plan.name}</div>
+              
+              <div className="mb-8 flex items-baseline gap-1 mt-4">
+                {plan.price !== "Custom" && <span className={`text-2xl font-medium ${plan.mutedText || 'text-[#6B7280]'}`}>$</span>}
+                <span className={`text-4xl lg:text-5xl font-bold tracking-tight ${plan.text || 'text-[#111827]'}`}>{plan.price}</span>
+                {plan.price !== "Custom" && <span className={`text-sm ${plan.mutedText || 'text-[#9CA3AF]'}`}>/mo</span>}
+              </div>
+
+              <ul className="mb-10 flex flex-col gap-4 flex-1">
+                {plan.features.map((feat) => (
+                  <li key={feat} className="flex items-start gap-3">
+                    <Check className={`h-5 w-5 shrink-0 ${plan.highlighted ? 'text-[#14B8A6]' : 'text-[#0F766E]'}`} />
+                    <span className={`text-sm font-medium leading-tight ${plan.mutedText || 'text-[#4B5563]'}`}>{feat}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <button className={`w-full rounded-xl py-4 text-sm transition-all ${plan.button}`}>
+                {plan.price === "Custom" ? "Contact Enterprise Sales" : "Choose Plan"}
+              </button>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

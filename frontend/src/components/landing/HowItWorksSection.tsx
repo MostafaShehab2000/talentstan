@@ -1,72 +1,77 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { UserPlus, Shield, Sparkles, Stethoscope, CheckCircle2, CreditCard, FileCheck } from "lucide-react";
+import { UserPlus, ShieldCheck, HeartHandshake, CheckCircle2, Stethoscope, Briefcase, CreditCard } from "lucide-react";
 
 const steps = [
-  { icon: UserPlus, step: "01", title: "Registration", description: "Create your digital identity in 60 seconds with basic credentials." },
-  { icon: FileCheck, step: "02", title: "Verification", description: "Automated credential & background verification from primary sources." },
-  { icon: Sparkles, step: "03", title: "Matching", description: "AI algorithms align you with the highest-value opportunities." },
-  { icon: CheckCircle2, step: "04", title: "Acceptance", description: "Review and confirm shifts on your terms, on your schedule." },
-  { icon: Stethoscope, step: "05", title: "Work", description: "Execute the shift with full digital support and real-time backup." },
-  { icon: Shield, step: "06", title: "Completion", description: "Digital sign-off and automated quality assurance confirmation." },
-  { icon: CreditCard, step: "07", title: "Payment", description: "Instant, frictionless financial settlement within 24-48 hours." },
+  { num: "01", title: "Registration", icon: UserPlus, desc: "Create profile in 60 seconds." },
+  { num: "02", title: "Verification", icon: ShieldCheck, desc: "Automated credential validation." },
+  { num: "03", title: "Matching", icon: HeartHandshake, desc: "AI routes shifts based on parameters." },
+  { num: "04", title: "Acceptance", icon: CheckCircle2, desc: "Instant shift confirmation." },
+  { num: "05", title: "Work", icon: Stethoscope, desc: "Deliver high-quality care." },
+  { num: "06", title: "Completion", icon: Briefcase, desc: "Facility verifies attendance." },
+  { num: "07", title: "Payment", icon: CreditCard, desc: "Automated direct deposit." },
 ];
 
 export function HowItWorksSection() {
   return (
-    <section className="bg-white border-b border-[#F3F4F6] py-20">
+    <section className="bg-[#F8FAFC] py-32 border-y border-[#E5E7EB]">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mb-14 text-center">
+        <div className="mb-24 text-center max-w-3xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl font-bold tracking-tight text-[#0A2218]"
+            className="text-3xl lg:text-5xl font-bold tracking-tight text-[#021A18]"
           >
-            Flawless Execution, Every Time.
+            Operational Workflow
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="mt-4 text-base text-[#6B7280] max-w-lg mx-auto"
+            className="mt-6 text-lg text-[#6B7280] leading-relaxed"
           >
-            A completely deterministic workflow from onboarding to payout.
+            The fastest path from staffing shortage to clinical coverage.
           </motion.p>
         </div>
 
         <div className="relative">
-          {/* Connecting line */}
-          <div className="absolute top-10 left-10 right-10 hidden h-px bg-[#F3F4F6] lg:block">
+          {/* Horizontal Line connecting steps (hidden on mobile) */}
+          <div className="absolute top-[4.5rem] left-[5%] right-[5%] hidden h-0.5 bg-[#E5E7EB] lg:block" />
+          
+          {/* Animated Line Progress */}
+          <div className="absolute top-[4.5rem] left-[5%] right-[5%] hidden h-0.5 lg:block overflow-hidden">
             <motion.div
-              className="h-full bg-gradient-to-r from-[#0F766E] to-[#14B8A6]"
-              initial={{ width: "0%" }}
-              whileInView={{ width: "100%" }}
+              className="h-full w-full bg-[#0F766E]"
+              initial={{ x: "-100%" }}
+              whileInView={{ x: "0%" }}
               viewport={{ once: true }}
-              transition={{ duration: 1.5, ease: "easeInOut" }}
+              transition={{ duration: 2, ease: "easeInOut" }}
             />
           </div>
 
-          <div className="grid gap-8 grid-cols-2 md:grid-cols-4 lg:grid-cols-7 relative z-10">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-7 lg:gap-4 relative z-10">
             {steps.map((step, i) => (
               <motion.div
-                key={step.title}
+                key={step.num}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.12 }}
-                className="group flex flex-col items-center text-center gap-3"
+                transition={{ delay: i * 0.1 }}
+                className="flex flex-col items-center text-center group"
               >
-                <div className="relative flex h-20 w-20 items-center justify-center rounded-2xl border-2 border-[#E5E7EB] bg-white shadow-sm transition-all duration-300 group-hover:border-[#0F766E]/50 group-hover:shadow-md group-hover:-translate-y-1">
-                  <step.icon className="h-8 w-8 text-[#374151] transition-colors group-hover:text-[#0F766E]" />
-                  <div className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-[#0F766E] text-[9px] font-bold text-white">
-                    {step.step}
-                  </div>
+                <div className="mb-4 text-xs font-bold tracking-widest text-[#0F766E] uppercase opacity-0 group-hover:opacity-100 transition-opacity">
+                  Phase {step.num}
                 </div>
-                <h3 className="text-sm font-semibold text-[#111827]">{step.title}</h3>
-                <p className="text-xs text-[#9CA3AF] leading-relaxed">{step.description}</p>
+                <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full border-[6px] border-[#F8FAFC] bg-white shadow-xl transition-transform group-hover:scale-110 group-hover:shadow-2xl group-hover:shadow-[#0F766E]/20">
+                  <step.icon className="h-8 w-8 text-[#021A18] transition-colors group-hover:text-[#0F766E]" />
+                </div>
+                <h3 className="mb-2 text-sm font-bold text-[#021A18] uppercase tracking-wide">{step.title}</h3>
+                <p className="text-xs font-medium text-[#6B7280] leading-relaxed max-w-[140px]">
+                  {step.desc}
+                </p>
               </motion.div>
             ))}
           </div>

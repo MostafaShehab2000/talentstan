@@ -1,59 +1,49 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Quote } from "lucide-react";
 
 const testimonials = [
   {
-    quote: "TalentStan didn't just solve our staffing shortage — it fundamentally changed how we calculate the cost of human capital. We reduced agency fees by 40% in the first quarter.",
-    author: "Dr. Elena Rostova",
-    title: "Chief Medical Officer",
-    company: "Vanguard Health, Dubai",
-    rating: 5,
+    quote: "TalentStan is not a staffing agency; it is a liquidity provider for healthcare workforce. The AI matching and dynamic pricing have reduced our operational overhead by 34%.",
+    name: "Dr. Ahmed Al-Rashid",
+    role: "CEO, Saudi German Health Network",
   },
   {
-    quote: "The interface is invisible. The matching is instant. It is the only platform that truly respects the value of a physician's time and places clinical fit above everything else.",
-    author: "James Chen, MD",
-    title: "Cardiothoracic Surgeon",
-    company: "Saudi German Hospital, Jeddah",
-    rating: 5,
+    quote: "The rigor of their credential verification engine is unprecedented. We achieve compliance automatically, allowing our clinical directors to focus on patient outcomes rather than paperwork.",
+    name: "Sarah Chen, MD",
+    role: "Chief Medical Officer, Vanguard Health",
+  },
+  {
+    quote: "As an independent practitioner, the platform provides complete autonomy. The real-time pricing transparency and instant settlement infrastructure are game-changing.",
+    name: "Dr. Youssef Fadel",
+    role: "Consultant Anesthesiologist",
   },
 ];
 
 export function TestimonialsSection() {
   return (
-    <section className="bg-[#FAFAFA] border-b border-[#F3F4F6] py-20">
+    <section className="bg-white py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mb-14 text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-[#0A2218]">What Our Network Says</h2>
-          <p className="mt-4 text-base text-[#6B7280]">Trusted by the most demanding healthcare organizations in the region.</p>
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-2">
-          {testimonials.map((t, i) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {testimonials.map((test, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className="flex flex-col justify-between rounded-2xl border border-[#E5E7EB] bg-white p-8 shadow-sm hover:shadow-md transition-shadow"
+              transition={{ delay: i * 0.1 }}
+              className="flex flex-col justify-between rounded-[2rem] border border-[#E5E7EB] bg-white p-10 transition-all hover:shadow-2xl hover:shadow-[#0F766E]/5 hover:-translate-y-2 group"
             >
               <div>
-                <div className="flex gap-0.5 mb-4">
-                  {Array.from({ length: t.rating }).map((_, j) => (
-                    <span key={j} className="text-[#F59E0B] text-base">★</span>
-                  ))}
-                </div>
-                <p className="text-lg font-medium text-[#111827] leading-relaxed">"{t.quote}"</p>
+                <Quote className="h-8 w-8 text-[#E5E7EB] mb-6 transition-colors group-hover:text-[#14B8A6]" />
+                <p className="text-base font-medium text-[#374151] leading-relaxed mb-8">
+                  "{test.quote}"
+                </p>
               </div>
-              <div className="mt-8 flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-[#F0FDF9] border border-[#E5E7EB] flex items-center justify-center font-bold text-[#0F766E]">
-                  {t.author.charAt(0)}
-                </div>
-                <div>
-                  <div className="text-sm font-semibold text-[#111827]">{t.author}</div>
-                  <div className="text-xs text-[#6B7280]">{t.title} · {t.company}</div>
-                </div>
+              <div className="border-t border-[#F3F4F6] pt-6">
+                <div className="text-sm font-bold text-[#021A18]">{test.name}</div>
+                <div className="text-xs font-medium text-[#6B7280]">{test.role}</div>
               </div>
             </motion.div>
           ))}
