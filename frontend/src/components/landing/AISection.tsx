@@ -1,117 +1,108 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BrainCircuit, Zap, ShieldCheck } from "lucide-react";
+import { BrainCircuit, Zap, ShieldCheck, BarChart3 } from "lucide-react";
 
 export function AISection() {
   return (
-    <section className="bg-foreground py-32 text-background overflow-hidden relative">
-      <div className="absolute top-0 right-0 -z-10 translate-x-1/3 -translate-y-1/3">
-        <div className="h-[40rem] w-[40rem] rounded-full bg-primary/20 blur-[120px]" />
-      </div>
+    <section className="bg-[#0A2218] py-20 overflow-hidden relative">
+      <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "radial-gradient(#14B8A6 1px, transparent 1px)", backgroundSize: "30px 30px" }} />
 
-      <div className="container mx-auto px-6 md:px-12">
-        <div className="grid gap-16 lg:grid-cols-2 lg:gap-8 items-center">
-          <div className="flex flex-col items-start gap-8">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+          <div>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 rounded-full border border-background/20 bg-background/10 px-3 py-1 text-sm font-medium backdrop-blur-sm"
+              className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5"
             >
-              <BrainCircuit className="h-4 w-4 text-accent" />
-              Intelligence Layer
+              <BrainCircuit className="h-4 w-4 text-[#14B8A6]" />
+              <span className="text-sm font-medium text-white/80">Intelligence Layer</span>
             </motion.div>
 
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-4xl font-semibold tracking-tighter sm:text-5xl md:text-6xl"
+              className="text-3xl font-bold text-white leading-tight mb-5"
             >
-              Algorithmic precision. <br />
-              <span className="text-muted-foreground">Human reliability.</span>
+              Algorithmic precision.<br />
+              <span className="text-white/50">Human reliability.</span>
             </motion.h2>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="max-w-xl text-lg text-muted-foreground/80"
+              transition={{ delay: 0.15 }}
+              className="text-white/60 leading-relaxed mb-8"
             >
-              Our proprietary matching engine analyzes 40+ dynamic variables including credentials, proximity, historical reliability, and real-time facility urgency to ensure the perfect clinical fit in milliseconds.
+              Our proprietary engine analyzes 40+ dynamic variables — credentials, proximity, historical reliability, and real-time urgency — to ensure the perfect clinical fit in milliseconds.
             </motion.p>
 
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="grid gap-6 sm:grid-cols-2 mt-4"
-            >
-              <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/20">
-                  <Zap className="h-5 w-5 text-accent" />
-                </div>
-                <div>
-                  <h4 className="font-medium">Dynamic Pricing</h4>
-                  <p className="mt-1 text-sm text-muted-foreground/80">Real-time market rates based on urgency.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/20">
-                  <ShieldCheck className="h-5 w-5 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-medium">Credential Guard</h4>
-                  <p className="mt-1 text-sm text-muted-foreground/80">Automated primary source verification.</p>
-                </div>
-              </div>
-            </motion.div>
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { icon: Zap, title: "Dynamic Pricing", desc: "Real-time market rates based on urgency and scarcity." },
+                { icon: ShieldCheck, title: "Credential Guard", desc: "Automated primary source verification." },
+                { icon: BarChart3, title: "Workforce Analytics", desc: "Bloomberg-level insights on utilization." },
+                { icon: BrainCircuit, title: "Predictive Matching", desc: "Learn and improve with every match made." },
+              ].map((feat, i) => (
+                <motion.div
+                  key={feat.title}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 + i * 0.08 }}
+                  className="rounded-xl border border-white/10 bg-white/5 p-4"
+                >
+                  <feat.icon className="h-5 w-5 text-[#14B8A6] mb-2" />
+                  <div className="text-sm font-semibold text-white mb-1">{feat.title}</div>
+                  <div className="text-xs text-white/50">{feat.desc}</div>
+                </motion.div>
+              ))}
+            </div>
           </div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="relative mx-auto w-full max-w-lg lg:max-w-none lg:ml-auto"
+            transition={{ duration: 0.7 }}
+            className="rounded-2xl border border-white/10 bg-black/30 p-2"
           >
-            <div className="aspect-[4/3] w-full rounded-3xl border border-background/10 bg-background/5 p-2 shadow-2xl backdrop-blur-xl">
-              <div className="h-full w-full rounded-2xl bg-black/40 p-6 flex flex-col gap-4 relative overflow-hidden">
-                {/* Simulated Code/Terminal output */}
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="h-3 w-3 rounded-full bg-destructive" />
-                  <div className="h-3 w-3 rounded-full bg-yellow-500" />
-                  <div className="h-3 w-3 rounded-full bg-green-500" />
-                </div>
-                
-                {[
-                  { text: "Analyzing 1,240 nearby professionals...", delay: 0 },
-                  { text: "Filtering by: ICU Exp > 5yrs, BLS Certified", delay: 1 },
-                  { text: "Calculating optimal market rate: $145/hr", delay: 2 },
-                  { text: "Match Found: RN. Sarah Jenkins (99.8% Fit)", delay: 3, highlight: true }
-                ].map((line, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.5 + line.delay * 0.4 }}
-                    className={`font-mono text-sm sm:text-base ${line.highlight ? 'text-accent' : 'text-muted-foreground/60'}`}
-                  >
-                    <span className="opacity-50 mr-2">{'>'}</span> {line.text}
-                  </motion.div>
-                ))}
-
-                <motion.div 
-                  className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent"
-                  animate={{ x: ['-100%', '100%'] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                />
+            <div className="rounded-xl bg-black/60 p-6 font-mono text-sm backdrop-blur-sm">
+              <div className="flex items-center gap-2 mb-5">
+                <div className="h-2.5 w-2.5 rounded-full bg-red-500/80" />
+                <div className="h-2.5 w-2.5 rounded-full bg-yellow-500/80" />
+                <div className="h-2.5 w-2.5 rounded-full bg-green-500/80" />
+                <span className="ml-2 text-xs text-white/30">talentstan_ai_engine.log</span>
               </div>
+              {[
+                { text: "Scanning 1,240 nearby professionals...", color: "text-white/50", delay: 0.3 },
+                { text: "Filter: ICU Exp > 5yrs, BLS Certified ✓", color: "text-white/50", delay: 0.7 },
+                { text: "Running location proximity scoring...", color: "text-white/50", delay: 1.1 },
+                { text: "Calculating optimal market rate: $145/hr", color: "text-white/50", delay: 1.5 },
+                { text: "Reliability score analysis: 99.2% ✓", color: "text-white/50", delay: 1.9 },
+                { text: "✅ MATCH FOUND: RN Sarah Jenkins — 95% Fit", color: "text-[#14B8A6]", delay: 2.3, bold: true },
+              ].map((line, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: line.delay }}
+                  className={`mb-2 ${line.color} ${line.bold ? "font-bold" : ""}`}
+                >
+                  <span className="text-white/20 mr-2">{`>`}</span>{line.text}
+                </motion.div>
+              ))}
+              <motion.div
+                className="mt-4 h-0.5 w-full rounded-full bg-gradient-to-r from-transparent via-[#14B8A6] to-transparent"
+                animate={{ opacity: [0.3, 1, 0.3] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
             </div>
           </motion.div>
         </div>

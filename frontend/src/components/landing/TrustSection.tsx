@@ -1,58 +1,75 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Users, Building2, CheckCircle2, Globe } from "lucide-react";
 
-function Counter({ end, suffix = "", label }: { end: number; suffix?: string; label: string }) {
+const stats = [
+  { value: 25000, suffix: "+", label: "Healthcare Professionals", icon: Users },
+  { value: 1200, suffix: "+", label: "Healthcare Facilities", icon: Building2 },
+  { value: 85000, suffix: "+", label: "Successful Matches", icon: CheckCircle2 },
+  { value: 6, suffix: "", label: "Countries Covered", icon: Globe },
+];
+
+function AnimatedCounter({ end, suffix }: { end: number; suffix: string }) {
   const [count, setCount] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const [started, setStarted] = useState(false);
 
   useEffect(() => {
-    let start = 0;
-    const duration = 2000;
-    const increment = end / (duration / 16);
-
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= end) {
-        setCount(end);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
-      }
-    }, 16);
-
-    return () => clearInterval(timer);
-  }, [end]);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started) {
+          setStarted(true);
+          const duration = 1800;
+          const start = Date.now();
+          const tick = () => {
+            const elapsed = Date.now() - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            setCount(Math.floor(eased * end));
+            if (progress < 1) requestAnimationFrame(tick);
+            else setCount(end);
+          };
+          requestAnimationFrame(tick);
+        }
+      },
+      { threshold: 0.5 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [end, started]);
 
   return (
-    <div className="flex flex-col items-center justify-center gap-2 text-center">
-      <div className="text-4xl font-bold tracking-tighter sm:text-5xl lg:text-6xl text-foreground">
-        {count.toLocaleString()}
-        <span className="text-primary">{suffix}</span>
-      </div>
-      <div className="text-sm font-medium uppercase tracking-wider text-muted-foreground">
-        {label}
-      </div>
+    <div ref={ref} className="text-3xl font-bold text-[#111827]">
+      {count.toLocaleString()}
+      {suffix}
     </div>
   );
 }
 
 export function TrustSection() {
   return (
-    <section className="border-y border-border/50 bg-muted/20 py-24">
-      <div className="container mx-auto px-6 md:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
-          className="grid grid-cols-2 gap-12 md:grid-cols-4 lg:gap-8"
-        >
-          <Counter end={50000} suffix="+" label="Professionals" />
-          <Counter end={1200} suffix="+" label="Facilities" />
-          <Counter end={250} suffix="k" label="Successful Matches" />
-          <Counter end={99} suffix="%" label="Coverage Rate" />
-        </motion.div>
+    <section className="border-b border-[#F3F4F6] bg-white py-14">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+          {stats.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              className="flex flex-col items-center text-center gap-3"
+            >
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#F0FDF9]">
+                <stat.icon className="h-6 w-6 text-[#0F766E]" />
+              </div>
+              <AnimatedCounter end={stat.value} suffix={stat.suffix} />
+              <div className="text-sm text-[#6B7280] font-medium">{stat.label}</div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
