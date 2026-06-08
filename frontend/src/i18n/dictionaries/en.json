@@ -1,0 +1,35 @@
+{
+  "navbar": {
+    "announcement": "TalentStan is now live across 6 countries in the MENA region.",
+    "hiring": "We're hiring! View open roles",
+    "solutions": "Solutions",
+    "forProfessionals": "For Professionals",
+    "forFacilities": "For Facilities",
+    "pricing": "Pricing",
+    "resources": "Resources",
+    "aboutUs": "About Us",
+    "login": "Log In",
+    "getStarted": "Get Started"
+  },
+  "hero": {
+    "badge": "ENTERPRISE OS FOR HEALTHCARE",
+    "title1": "The Digital",
+    "title2": "Nation of",
+    "title3": "Healthcare",
+    "title4": "Talent.",
+    "description": "TalentStan is the intelligent marketplace connecting healthcare facilities with verified medical professionals through AI-powered workforce orchestration.",
+    "getStarted": "Get Started",
+    "bookDemo": "Book Enterprise Demo",
+    "dashboard": {
+      "title": "Workforce OS",
+      "status": "SYSTEM LIVE",
+      "activeShifts": "Active Shifts",
+      "liveProfessionals": "Live Professionals",
+      "marketPrice": "Market Price",
+      "revenue": "Revenue",
+      "aiMatch": "AI Match Score Optimization",
+      "accuracy": "98.5% Accuracy",
+      "verified": "VERIFIED & AVAILABLE"
+    }
+  }
+}

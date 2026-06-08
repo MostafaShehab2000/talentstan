@@ -4,7 +4,9 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, PlayCircle, TrendingUp, Activity, CheckCircle2 } from "lucide-react";
 
-export function Hero() {
+export function Hero({ dict, lang }: { dict: any, lang: string }) {
+  const isArabic = lang === 'ar';
+
   return (
     <section className="relative overflow-hidden bg-[#F8FAFC] pt-24 pb-32">
       {/* Background Cinematic Glows */}
@@ -26,7 +28,7 @@ export function Hero() {
             >
               <div className="inline-flex items-center gap-2 rounded-full border border-[#0F766E]/20 bg-[#0F766E]/5 px-4 py-1.5 backdrop-blur-md">
                 <span className="flex h-2 w-2 rounded-full bg-[#0F766E]" />
-                <span className="text-sm font-semibold text-[#0F766E] tracking-wide">ENTERPRISE OS FOR HEALTHCARE</span>
+                <span className="text-sm font-semibold text-[#0F766E] tracking-wide uppercase">{dict.badge}</span>
               </div>
             </motion.div>
 
@@ -34,12 +36,12 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-6xl sm:text-7xl lg:text-[5.5rem] font-bold tracking-tighter text-[#021A18] leading-[0.95] mb-8"
+              className="text-6xl sm:text-7xl lg:text-[5.5rem] font-bold tracking-tighter text-[#021A18] leading-[1.1] mb-8"
             >
-              The Digital <br />
-              Nation of <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0F766E] to-[#14B8A6]">Healthcare</span> <br />
-              Talent.
+              {dict.title1} <br />
+              {dict.title2} <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0F766E] to-[#14B8A6]">{dict.title3}</span> <br />
+              {dict.title4}
             </motion.h1>
 
             <motion.p
@@ -48,7 +50,7 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="text-xl text-[#4B5563] leading-relaxed mb-10 max-w-lg font-medium"
             >
-              TalentStan is the intelligent marketplace connecting healthcare facilities with verified medical professionals through AI-powered workforce orchestration.
+              {dict.description}
             </motion.p>
 
             <motion.div
@@ -58,16 +60,16 @@ export function Hero() {
               className="flex flex-col sm:flex-row gap-4"
             >
               <Link
-                href="/register"
+                href={`/${lang}/register`}
                 className="group flex h-14 items-center justify-center gap-2 rounded-full bg-[#021A18] px-8 text-base font-semibold text-white transition-all hover:bg-[#0F766E] hover:shadow-xl hover:shadow-[#0F766E]/20 hover:-translate-y-1 active:translate-y-0"
               >
-                Get Started <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                {dict.getStarted} <ArrowRight className={`h-4 w-4 transition-transform ${isArabic ? 'rotate-180 group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`} />
               </Link>
               <Link
-                href="/demo"
+                href={`/${lang}/demo`}
                 className="group flex h-14 items-center justify-center gap-2 rounded-full border-2 border-[#E5E7EB] bg-white px-8 text-base font-semibold text-[#021A18] transition-all hover:border-[#021A18] hover:bg-[#F8FAFC]"
               >
-                <PlayCircle className="h-5 w-5 text-[#0F766E] transition-transform group-hover:scale-110" /> Book Enterprise Demo
+                <PlayCircle className="h-5 w-5 text-[#0F766E] transition-transform group-hover:scale-110" /> {dict.bookDemo}
               </Link>
             </motion.div>
           </div>
@@ -91,27 +93,27 @@ export function Hero() {
                   <div className="h-8 w-8 rounded-lg bg-[#021A18] flex items-center justify-center">
                     <Activity className="h-4 w-4 text-[#14B8A6]" />
                   </div>
-                  <span className="font-bold text-[#021A18]">Workforce OS</span>
+                  <span className="font-bold text-[#021A18]">{dict.dashboard.title}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="flex h-2 w-2 rounded-full bg-green-500 animate-pulse" />
-                  <span className="text-xs font-semibold text-[#6B7280]">SYSTEM LIVE</span>
+                  <span className="text-xs font-semibold text-[#6B7280] uppercase">{dict.dashboard.status}</span>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4 mb-6">
                 {[
-                  { label: "Active Shifts", value: "1,246", change: "+14%" },
-                  { label: "Live Professionals", value: "26,842", change: "+8%" },
-                  { label: "Market Price", value: "$145/hr", change: "+2%" },
-                  { label: "Revenue", value: "$8.4M", change: "+24%" },
+                  { label: dict.dashboard.activeShifts, value: "1,246", change: "+14%" },
+                  { label: dict.dashboard.liveProfessionals, value: "26,842", change: "+8%" },
+                  { label: dict.dashboard.marketPrice, value: "$145/hr", change: "+2%" },
+                  { label: dict.dashboard.revenue, value: "$8.4M", change: "+24%" },
                 ].map((stat) => (
                   <div key={stat.label} className="rounded-2xl border border-[#E5E7EB]/50 bg-[#F8FAFC]/50 p-4 transition-colors hover:bg-white">
                     <div className="text-xs font-medium text-[#6B7280] mb-2">{stat.label}</div>
                     <div className="flex items-end justify-between">
                       <div className="text-2xl font-bold text-[#021A18]">{stat.value}</div>
-                      <div className="flex items-center text-xs font-bold text-[#0F766E] bg-[#0F766E]/10 px-1.5 py-0.5 rounded">
-                        <TrendingUp className="h-3 w-3 mr-0.5" /> {stat.change}
+                      <div className="flex items-center text-xs font-bold text-[#0F766E] bg-[#0F766E]/10 px-1.5 py-0.5 rounded gap-1" dir="ltr">
+                        <TrendingUp className="h-3 w-3" /> {stat.change}
                       </div>
                     </div>
                   </div>
@@ -120,8 +122,8 @@ export function Hero() {
 
               <div className="rounded-2xl bg-[#021A18] p-5 text-white">
                 <div className="flex justify-between items-center mb-4">
-                  <div className="text-sm font-semibold text-white/80">AI Match Score Optimization</div>
-                  <div className="text-xs font-bold text-[#14B8A6] bg-[#14B8A6]/20 px-2 py-1 rounded-full">98.5% Accuracy</div>
+                  <div className="text-sm font-semibold text-white/80">{dict.dashboard.aiMatch}</div>
+                  <div className="text-xs font-bold text-[#14B8A6] bg-[#14B8A6]/20 px-2 py-1 rounded-full">{dict.dashboard.accuracy}</div>
                 </div>
                 <div className="h-16 w-full rounded-xl overflow-hidden relative">
                   {/* Fake Bloomberg chart */}
@@ -136,11 +138,11 @@ export function Hero() {
             <motion.div
               animate={{ y: [0, -15, 0], x: [0, 5, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute -right-8 top-12 z-20"
+              className={`absolute top-12 z-20 ${isArabic ? '-left-8' : '-right-8'}`}
               style={{ transform: 'translateZ(50px)' }}
             >
               <div className="flex items-center gap-4 rounded-2xl border border-white/60 bg-white/90 p-4 shadow-xl backdrop-blur-xl">
-                <div className="h-12 w-12 rounded-full bg-gradient-to-br from-[#0F766E] to-[#14B8A6] p-0.5">
+                <div className="h-12 w-12 rounded-full bg-gradient-to-br from-[#0F766E] to-[#14B8A6] p-0.5 shrink-0">
                   <div className="h-full w-full rounded-full border-2 border-white bg-[#021A18] flex items-center justify-center text-lg">👩‍⚕️</div>
                 </div>
                 <div>
@@ -148,33 +150,12 @@ export function Hero() {
                   <div className="text-xs font-medium text-[#6B7280]">Cardiothoracic Surgeon</div>
                   <div className="flex items-center gap-1.5 mt-1">
                     <CheckCircle2 className="h-3 w-3 text-[#14B8A6]" />
-                    <span className="text-[10px] font-bold text-[#14B8A6]">VERIFIED & AVAILABLE</span>
+                    <span className="text-[10px] font-bold text-[#14B8A6] uppercase">{dict.dashboard.verified}</span>
                   </div>
                 </div>
               </div>
             </motion.div>
 
-            {/* Floating Profile 2 */}
-            <motion.div
-              animate={{ y: [0, 15, 0], x: [0, -5, 0] }}
-              transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="absolute -left-12 bottom-20 z-20"
-              style={{ transform: 'translateZ(80px)' }}
-            >
-              <div className="flex items-center gap-4 rounded-2xl border border-white/60 bg-white/90 p-4 shadow-xl backdrop-blur-xl">
-                <div className="h-12 w-12 rounded-full bg-gradient-to-br from-[#2563EB] to-blue-400 p-0.5">
-                  <div className="h-full w-full rounded-full border-2 border-white bg-[#021A18] flex items-center justify-center text-lg">👨‍⚕️</div>
-                </div>
-                <div>
-                  <div className="text-sm font-bold text-[#021A18]">James Chen, MD</div>
-                  <div className="text-xs font-medium text-[#6B7280]">Emergency Medicine</div>
-                  <div className="flex items-center gap-1.5 mt-1">
-                    <CheckCircle2 className="h-3 w-3 text-[#14B8A6]" />
-                    <span className="text-[10px] font-bold text-[#14B8A6]">VERIFIED & AVAILABLE</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </div>

@@ -10,13 +10,19 @@ import { TestimonialsSection } from "@/components/landing/TestimonialsSection";
 import { FAQSection } from "@/components/landing/FAQSection";
 import { CTASection } from "@/components/landing/CTASection";
 import { Footer } from "@/components/landing/Footer";
+import { getDictionary } from "@/i18n/get-dictionary";
+import { Locale } from "@/i18n-config";
 
-export default function Home() {
+export default async function Home({ params }: { params: Promise<{ lang: Locale }> }) {
+  const resolvedParams = await params;
+  const lang = resolvedParams.lang;
+  const dict = await getDictionary(lang);
+
   return (
     <div className="bg-white">
-      <Navbar />
+      <Navbar dict={dict.navbar} lang={lang} />
       <main>
-        <Hero />
+        <Hero dict={dict.hero} lang={lang} />
         <LiveMarketSection />
         <TrustedBySection />
         <PricingSection />
